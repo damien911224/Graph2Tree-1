@@ -9,7 +9,7 @@ mkdir checkpoint_dir/valid
 mkdir output
 
 # echo -----------pretrained embedding generating-----------
-python pretrained_embedding.py -pretrained_embedding="*where your glove text saved*"
+python pretrained_embedding.py -pretrained_embedding="/glove68"
 # echo ------------Begin training---------------------------
 python graph2tree.py
 # echo -----------------------------------------------------

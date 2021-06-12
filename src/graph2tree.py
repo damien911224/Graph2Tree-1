@@ -110,7 +110,7 @@ def get_dec_batch(dec_tree_batch, opt, using_gpu, form_manager):
     queue_tree = {}
     for i in range(1, opt.batch_size+1):
         queue_tree[i] = []
-        queue_tree[i].append({"tree" : dec_tree_batch[i-1], "parent": 0, "child_index": 1})
+        queue_tree[i].append({"tree": dec_tree_batch[i - 1], "parent": 0, "child_index": 1})
 
     cur_index, max_index = 1,1
     dec_batch = {}
@@ -152,7 +152,6 @@ def get_dec_batch(dec_tree_batch, opt, using_gpu, form_manager):
         cur_index += 1
 
     return dec_batch, queue_tree, max_index
-
 
 def eval_training(opt, train_loader, encoder, decoder, attention_decoder, encoder_optimizer, decoder_optimizer, attention_decoder_optimizer, criterion, using_gpu, word_manager, form_manager):
     encoder_optimizer.zero_grad()
@@ -222,7 +221,9 @@ def eval_training(opt, train_loader, encoder, decoder, attention_decoder, encode
 
                 flag_sibling = False
                 for q_index in range(len(queue_tree[i])):
-                    if (cur_index <= len(queue_tree[i])) and (q_index < cur_index - 1) and (queue_tree[i][q_index]["parent"] == queue_tree[i][cur_index - 1]["parent"]) and (queue_tree[i][q_index]["child_index"] < queue_tree[i][cur_index - 1]["child_index"]):
+                    if (cur_index <= len(queue_tree[i])) and (q_index < cur_index - 1) and \
+                            (queue_tree[i][q_index]["parent"] == queue_tree[i][cur_index - 1]["parent"]) and \
+                            (queue_tree[i][q_index]["child_index"] < queue_tree[i][cur_index - 1]["child_index"]):
                         flag_sibling = True
                         sibling_index = q_index
                 if flag_sibling:
@@ -416,7 +417,7 @@ def main(opt):
             loss_to_print = 0
             start_time = time.time()
 
-    print "best_acc: ",best_val_acc
+    print("best_acc: ",best_val_acc)
 
 
 if __name__ == "__main__":

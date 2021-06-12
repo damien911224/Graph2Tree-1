@@ -235,9 +235,9 @@ def print_edges(g):
 def print_nodes(g, he_ta = False):
     nodes_arr = list(g.nodes())
     if he_ta:
-        print [(n.word, n.id, n.head, n.tail) for n in nodes_arr]
+        print([(n.word, n.id, n.head, n.tail) for n in nodes_arr])
     else:
-        print [(n.word, n.id) for n in nodes_arr]
+        print([(n.word, n.id) for n in nodes_arr])
     
 def graph_connect(a_, b_):
     a = copy.deepcopy(a_)
@@ -459,7 +459,7 @@ def train_data_preprocess():
         for w in new_vocab:
             if w not in word_manager.symbol2idx:
                     word_manager.add_symbol(w)
-                    print "{} Added.".format(w)
+                    print("{} Added.".format(w))
         index += batch_size
         print index
 
@@ -475,7 +475,7 @@ def train_data_preprocess():
     print(form_manager.vocab_size)
 
     time_end = time.time()
-    print "time used:" + str(time_end - time_start)
+    print("time used:" + str(time_end - time_start))
 
 def test_data_preprocess():
     data = []

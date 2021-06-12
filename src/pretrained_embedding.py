@@ -35,7 +35,7 @@ def generate_embedding_from_glove(args):
         if w in glove2vec.keys():
             word2vec[w] = glove2vec[w]
 
-    print len(word2vec)
+    print(len(word2vec))
     out_file = "{}/pretrain.pkl".format(data_dir)
     with open(out_file, "wb") as out_data:
         pkl.dump(word2vec, out_data)
@@ -61,16 +61,16 @@ def make_pretrained_embedding(embedding_size, opt):
             cnt_change += 1
         else:
             weight_matrix[i] = torch.randn((embedding_dim, ))
-    print cnt_change
+    print(cnt_change)
     return weight_matrix
 
 if __name__ == "__main__":
     main_arg_parser = argparse.ArgumentParser(description="parser")
     main_arg_parser.add_argument('-data_dir', type=str, default='../data/TextData', help='data path')
-    main_arg_parser.add_argument('-pretrained_embedding', type=str, default="/home/lishucheng/projects/Tools-and-Resources/glove/glove.6B.300d.txt")
+    main_arg_parser.add_argument('-pretrained_embedding', type=str, default="/glove68/glove.6B.300d.txt")
 
     args = main_arg_parser.parse_args()
     if os.path.exists("{}/pretrain.pkl".format(args.data_dir)):
-        print "word embedding has been generated !"
+        print("word embedding has been generated !")
     else:
         generate_embedding_from_glove(args)

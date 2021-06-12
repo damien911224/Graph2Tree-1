@@ -54,7 +54,7 @@ class SymbolsManager():
     
     def init_from_file(self, fn, min_freq, max_vocab_size):
         # the vocab file is sorted by word_freq
-        print "loading vocabulary file: {}".format(fn)
+        print("loading vocabulary file: {}".format(fn))
         with open(fn,"r") as f:
             for line in f:
                 l_list = line.strip().split('\t')
@@ -170,8 +170,8 @@ def is_solution_same(i1, i2, form_manager):
             return res1[0] == res2[0]
 
         except BaseException:
-            print c1
-            print c2
+            print(c1)
+            print(c2)
             return False
 
 
